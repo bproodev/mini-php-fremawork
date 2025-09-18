@@ -38,6 +38,6 @@ abstract class Model {
         $stmt = $this->db->prepare($sql);
         $stmt->execute($data);
 
-        return (int) $this->db->lastInserted();
+        return (int) $this->db->lastInsertId();
     }
 }

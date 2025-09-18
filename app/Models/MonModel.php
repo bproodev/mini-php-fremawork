@@ -5,7 +5,7 @@ use Core\Model;
 
 class MonModel  extends Model {
 
-    private string $table = "users";
+    public string $table = "users";
 
     public function all():array {
         return $this->fetchAll("SELECT * FROM $this->table");

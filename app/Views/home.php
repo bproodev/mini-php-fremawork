@@ -8,15 +8,19 @@
 </head>
 <body>
     <h1 class="title">Salut a toi le pro!</h1>
-    <ul>
+
+    <ul class="user-list">
         <?php foreach($users as $user): ?>
-            <li><?= htmlspecialchars($user->nom) ?></li>-
-            <li><?= htmlspecialchars($user->prenom) ?></li>
+            <li>
+                <p><strong>Nom Complet :</strong> <?= htmlspecialchars($user['prenom']) ?> </strong> <?= htmlspecialchars($user['nom']) ?></p>
+            </li>
         <?php endforeach ?>
     </ul>
+
     <a href="<?= BASE_PATH ?>/inscription">Inscrivez vous</a>
     <script src="<?= BASE_PATH ?>/assets/js/script.js"></script>
 </body>
+
 </html>
 
 

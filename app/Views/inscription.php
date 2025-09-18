@@ -15,8 +15,8 @@
                 <?php endforeach; ?>
             <?php endforeach; ?>
         </ul>
-    <?php elseif($message): ?>
-        <p><?= htmlspecialchars($message) ?></p>
+    <?php elseif($user): ?>
+        <p>Utilisateur, <?= htmlspecialchars($user["prenom"]) ?> a ete creer avec succes!</p>
     <?php else: ?>
         <form method="POST" action="<?= BASE_PATH ?>/sinscrire">
             <label for="nom">Nom:</label>
@@ -24,6 +24,12 @@
             <br>
             <label for="prenom">Prénom:</label>
             <input type="text" id="prenom" name="prenom" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
             <br>
             <button type="submit">S'inscrire</button>
         </form>

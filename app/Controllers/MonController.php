@@ -33,7 +33,9 @@ class MonController{
                 $data,
                 [
                     "nom" => "required|min:2|max:20",
-                    "prenom" => "required|min:3|max:15"
+                    "prenom" => "required|min:3|max:15",
+                    "email" => "required|email",
+                    "password" => "required|min:6"
                 ]
             );
 
@@ -43,12 +45,10 @@ class MonController{
                     "old" => $data
                 ]);
             }
-
-            $nom = $data['nom'] ?? '';
-            $prenom = $data['prenom'] ?? '';
             
-           // $message = $this->model->inscrire($nom, $prenom);
-            view("inscription", ["message" => $message]);
+           $id = $this->userModel->create($data);
+           $user = $this->userModel->find($id);
+            view("inscription", ["user" => $user]);
         } else {
             echo "Méthode non autorisée.";
         }
