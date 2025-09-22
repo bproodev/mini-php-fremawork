@@ -25,10 +25,12 @@ class Request{
     }
 
     public function all(): array {
-        return array_merge($_GET, $_POST);
+        return array_merge($_GET, $_POST, $_FILES);
     }
 
     public function filter(array $data): array {
-        return filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $file = $_FILES ?? [];
+        $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        return array_merge($data, $file);
     }
 }
