@@ -15,7 +15,6 @@ class UserModel extends Model {
         return $this->fetch("SELECT * FROM $this->table WHERE id = :id", ["id" => $id]);
     }
 
-
     public function create(array $data): int {
         return $this->insert($data);
     }

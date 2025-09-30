@@ -6,40 +6,47 @@ class Router{
 
     private array $routes = [];
 
-    public function get(string $path, callable|array $action) {
-        $this->addRoute('GET', $path, $action);
+    public function get(string $path, callable|array $action, array $middlewares = []) {
+        $this->addRoute('GET', $path, $action, $middlewares);
     }
 
-    public function post(string $path, callable|array $action) {
-        $this->addRoute('POST', $path, $action);
+    public function post(string $path, callable|array $action, array $middlewares = []) {
+        $this->addRoute('POST', $path, $action, $middlewares);
     }
 
-    public function put(string $path, callable|array $action) {
-        $this->addRoute('PUT', $path, $action);
+    public function put(string $path, callable|array $action, array $middlewares = []) {
+        $this->addRoute('PUT', $path, $action, $middlewares);
     }
 
-    public function patch(string $path, callable|array $action) {
-        $this->addRoute('PATCH', $path, $action);
+    public function patch(string $path, callable|array $action, array $middlewares = []) {
+        $this->addRoute('PATCH', $path, $action, $middlewares);
     }
 
-    public function delete(string $path, callable|array $action) {
-        $this->addRoute('DELETE', $path, $action);
+    public function delete(string $path, callable|array $action, array $middlewares = []) {
+        $this->addRoute('DELETE', $path, $action, $middlewares);
     }
 
-    private function addRoute(string $method, string $path, callable|array $action) {
+    private function addRoute(string $method, string $path, callable|array $action, array $middlewares = []) {
 
         $pattern = preg_replace('/\{(\w+)\}/', '([\w-]+)', $path);
         $pattern = "#^" . trim($pattern, '/') . "$#";
 
         $this->routes[$method][] = [
             'pattern' => $pattern,
-            'action' => $action
+            'action' => $action,
+            'middlewares' => $middlewares
         ];
     }
 
 
     public function dispatch() {
         $method = $_SERVER['REQUEST_METHOD'];
+
+        if ($method === 'POST' && isset($_POST['_method'])) {
+            $method = strtoupper($_POST['_method']);
+            unset($_POST['_method']);
+        }
+
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $uri = trim(str_replace(BASE_PATH, '', $uri), '/');
 
@@ -50,6 +57,7 @@ class Router{
         }
 
         foreach ($this->routes[$method] as $route) {
+
 
             if (preg_match($route['pattern'], $uri, $matches)) {
                 array_shift($matches); // Remove the full match
@@ -72,6 +80,13 @@ class Router{
                             }
                         }
 
+                        foreach ($route['middlewares'] as $middleware) {
+                            if (class_exists($middleware) && method_exists($middleware, 'handle')) {
+                                $middleware::handle();
+                            }
+                        }
+  
+                        
                         call_user_func_array([$controller, $methodName], $matches);
                         return;
                     }

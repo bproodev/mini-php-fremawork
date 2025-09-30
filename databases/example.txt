@@ -1,0 +1,37 @@
+🪑 Échantillon de produits
+
+1.
+Nom : Chaise Scandinave Blanche
+Prix en entier : 45 000
+Courte description : Chaise moderne en bois et plastique blanc
+Specification : Assise ergonomique en polypropylène, pieds en bois de hêtre massif, idéale pour salle à manger ou bureau.
+
+2.
+Nom : Chaise Vintage Rétro
+Prix en entier : 38 000
+Courte description : Chaise en métal et cuir vieilli
+Specification : Structure métallique noire, assise et dossier en cuir marron effet usé, style industriel pour loft ou intérieur moderne.
+
+3.
+Nom : Fauteuil Relax Tissu Gris
+Prix en entier : 120 000
+Courte description : Canapé individuel confortable
+Specification : Large assise moelleuse, tissu gris clair résistant, dossier inclinable, parfait pour coin lecture ou salon cosy.
+
+4.
+Nom : Canapé 2 Places Minimaliste
+Prix en entier : 220 000
+Courte description : Canapé compact en tissu bleu
+Specification : Structure en bois, coussins rembourrés en mousse haute densité, tissu lavable, design épuré pour petits espaces.
+
+5.
+Nom : Chaise de Bar Haute
+Prix en entier : 55 000
+Courte description : Tabouret moderne avec repose-pied
+Specification : Pieds en métal chromé, assise réglable en hauteur, simili cuir noir, parfait pour bar ou cuisine américaine.
+
+6.
+Nom : Chaise Médaillon Classique
+Prix en entier : 95 000
+Courte description : Chaise de style Louis XVI
+Specification : Structure en bois sculpté, dossier rond capitonné, tissu beige raffiné, idéale pour décoration élégante de salon.

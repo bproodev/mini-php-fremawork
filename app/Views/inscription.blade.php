@@ -16,7 +16,7 @@
     @if($user)
         <p>Utilisateur, {{ $user["prenom"] }} a ete creer avec succes!</p>
     @else
-        <form method="POST" action="{{ BASE_PATH. '/sinscrire' }}" id="uploadForm" enctype="multipart/form-data">
+        <form method="POST" action="{{ BASE_PATH. '/sinscrire' }}" enctype="multipart/form-data">
             <label for="nom">Nom:</label>
             <input type="text" id="nom" name="nom" required>
             <br>

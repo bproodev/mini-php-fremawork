@@ -16,7 +16,7 @@ class Database {
         if(self::$instance == null){
 
             $host   = $_ENV['DB_HOST'] ?? 'localhost';
-            $dbname = $_ENV['DB_NAME'] ?? 'test_db';
+            $dbname = $_ENV['DB_NAME'] ?? 'market_app_db';
             $user   = $_ENV['DB_USER'] ?? 'root';
             $pass   = $_ENV['DB_PASS'] ?? '';
 
